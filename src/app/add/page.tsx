@@ -25,7 +25,6 @@ export default function AddPage() {
     fetch("/api/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log("📦 productsByCategory:", data);
         setProductsByCategory(data);
       })
       .finally(() => setLoading(false));
@@ -137,7 +136,7 @@ export default function AddPage() {
               {selectedDispenser.colors.map((color) => (
                 <button
                   key={color}
-                  className={`px-4 py-2 rounded-lg shadow font-semibold text-white`}
+                  className="px-4 py-2 rounded-lg shadow font-semibold text-white bg-blue-600 hover:bg-blue-700 transition"
                   onClick={() => {
                     setSelectedColor(color);
                     setSelectedSupply(null);

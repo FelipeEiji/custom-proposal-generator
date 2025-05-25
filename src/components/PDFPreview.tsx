@@ -1,5 +1,5 @@
-'use client';
-import { useProposal } from '@/context/ProposalContext';
+"use client";
+import { useProposal } from "@/context/ProposalContext";
 
 export default function PDFPreview() {
   const { items } = useProposal();
@@ -10,37 +10,57 @@ export default function PDFPreview() {
   for (let i = 0; i < items.length; i += 3) pages.push(items.slice(i, i + 3));
 
   return (
-    <div id="pdf-preview">
+    <div id="pdf-preview" className="m-0 p-0">
       {pages.map((pageItems, pageIdx) => (
         <div
           key={pageIdx}
-          className="relative w-[210mm] h-[297mm] mx-auto bg-black-500 text-black px-[20mm] pt-[16mm] pb-[16mm] mb-8 last:mb-0"
+          className="relative w-[210mm] h-[296.8mm] mx-auto bg-white text-black px-[20mm] pt-[16mm] pb-[16mm] overflow-hidden"
         >
           <div className="flex flex-col h-full">
             <div className="flex-grow flex flex-col justify-between">
               {pageItems.map((item, idx) => {
                 const imgRight = idx === 0 || idx === 2;
                 const isLastItem = idx === pageItems.length - 1;
-                const shouldShowDivider = !(isLastItem && pageItems.length === 3);
+                const shouldShowDivider = !(
+                  isLastItem && pageItems.length === 3
+                );
 
                 return (
                   <div
                     key={item.code}
-                    className={`flex ${imgRight ? 'flex-row-reverse' : 'flex-row'} gap-5 items-start pb-[6mm] ${
-                      shouldShowDivider ? 'border-b border-black-300' : ''
+                    className={`flex ${
+                      imgRight ? "flex-row-reverse" : "flex-row"
+                    } gap-5 items-start pt-[6mm] ${
+                      shouldShowDivider ? "border-b border-black-300" : ""
                     }`}
-                    style={{ minHeight: '75mm' }}
+                    style={{ minHeight: "75mm" }}
                   >
-                    <img
-                      src={item.imageURL}
-                      alt={item.name}
-                      className="w-[42mm] h-[75mm] object-cover object-center shrink-0"
-                    />
+                    {/* Centered image container */}
+                    <div className="w-[42mm] h-[75mm] flex items-center justify-center shrink-0">
+                      <img
+                        src={item.imageURL}
+                        alt={item.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+
+                    {/* Text block */}
                     <div className="flex-1 text-[11pt] leading-[1.25rem]">
-                      <h2 className="text-[13pt] font-semibold mb-[2mm]">{item.name}</h2>
-                      <p><span className="font-semibold">Descrição:</span> {item.description}</p>
-                      <p><span className="font-semibold">Quantidade:</span> {item.quantity}</p>
-                      <p><span className="font-semibold">Preço Unitário:</span> R$ {item.price.toFixed(2)} (CÓD. {item.code})</p>
+                      <h2 className="text-[13pt] font-semibold mb-[2mm]">
+                        {item.name}
+                      </h2>
+                      <p>
+                        <span className="font-semibold">Descrição:</span>{" "}
+                        {item.description}
+                      </p>
+                      <p>
+                        <span className="font-semibold">Quantidade:</span>{" "}
+                        {item.quantity}
+                      </p>
+                      <p>
+                        <span className="font-semibold">Preço Unitário:</span>{" "}
+                        R$ {item.price.toFixed(2)} (CÓD. {item.code})
+                      </p>
                     </div>
                   </div>
                 );
@@ -48,8 +68,12 @@ export default function PDFPreview() {
             </div>
 
             {/* Footer logo centered */}
-            <footer className="mt-auto pt-[10mm] flex justify-center">
-              <img src="/tap_logo.png" alt="Logo" className="w-[40mm] h-auto mx-auto" />
+            <footer className="mt-auto pt-[10mm] pb-0 flex justify-center bg-white">
+              <img
+                src="/tap_logo.png"
+                alt="Logo"
+                className="w-[40mm] h-auto mx-auto"
+              />
             </footer>
           </div>
         </div>
