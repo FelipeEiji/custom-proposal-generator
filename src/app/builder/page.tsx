@@ -92,12 +92,6 @@ export default function BuilderPage() {
           {items.length > 0 && (
             <>
               <button
-                className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-md shadow-md transition"
-                onClick={() => setShowPreview(true)}
-              >
-                👁️ Visualizar PDF
-              </button>
-              <button
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md shadow-md transition flex items-center justify-center min-w-[160px]"
                 onClick={generatePDF}
                 disabled={loading}

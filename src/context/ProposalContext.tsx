@@ -1,6 +1,6 @@
 'use client';
 import React, { createContext, useContext, useState } from 'react';
-import { ProposalItem } from '@/types/Product';
+import { ProposalItem } from '@/types/ProposalItem';
 
 interface ProposalContextType {
   items: ProposalItem[];
