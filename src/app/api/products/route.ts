@@ -77,8 +77,6 @@ export async function GET() {
     // Convert Map to object for JSON response
     const groupedObj = Object.fromEntries(grouped);
 
-    console.log(JSON.stringify(groupedObj))
-
     return NextResponse.json(groupedObj);
   } catch (err) {
     console.error(err);
