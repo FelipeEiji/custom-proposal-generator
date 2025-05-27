@@ -35,7 +35,7 @@ export default function BuilderPage() {
           <ul className="space-y-4">
             {items.map((item) => (
               <li
-                key={item.code}
+                key={item.name}
                 className="relative border rounded-xl p-5 shadow-md bg-white hover:shadow-lg transition-all"
               >
                 <div className="flex justify-between items-start gap-4">
@@ -63,7 +63,7 @@ export default function BuilderPage() {
                     cancelText="Cancelar"
                     variant="destructive"
                     onConfirm={() => {
-                      removeItem(item.code);
+                      removeItem(item.name);
                     }}
                     trigger={
                       <button

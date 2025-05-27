@@ -34,7 +34,7 @@ export default function PDFPreview() {
 
                 return (
                   <div
-                    key={item.code}
+                    key={item.name}
                     className={`flex ${
                       imgRight ? "flex-row-reverse" : "flex-row"
                     } gap-5 items-start pt-[6mm] ${

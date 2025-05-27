@@ -15,11 +15,11 @@ export const ProposalProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [items, setItems] = useState<ProposalItem[]>([]);
 
   const addItem = (item: ProposalItem) => {
-    setItems((prev) => [...prev.filter(i => i.code !== item.code), item]);
+    setItems((prev) => [...prev.filter(i => i.name !== item.name), item]);
   };
 
-  const removeItem = (code: string) => {
-    setItems((prev) => prev.filter(i => i.code !== code));
+  const removeItem = (name: string) => {
+    setItems((prev) => prev.filter(i => i.name !== name));
   };
 
   const resetItems =  () => {
