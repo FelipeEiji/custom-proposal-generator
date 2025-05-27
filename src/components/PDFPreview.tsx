@@ -1,4 +1,5 @@
 "use client";
+import { ProposalItem } from "@/types/ProposalItem"
 import { useProposal } from "@/context/ProposalContext";
 
 export default function PDFPreview() {
@@ -12,7 +13,7 @@ export default function PDFPreview() {
   return (
     <div id="pdf-preview" className="m-0 p-0">
       {pages.map((pageItems, pageIdx) => {
-        const filledItems = [...pageItems];
+        const filledItems: (ProposalItem | null)[] = [...pageItems];
 
         while (filledItems.length < 3) {
           filledItems.push(null); // Add null placeholders to maintain layout
